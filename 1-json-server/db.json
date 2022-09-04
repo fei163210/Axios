@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "霸王色",
+      "author": "路飞"
+    },
+    {
+      "title": "太阳神",
+      "authour": "路飞",
+      "id": 3
+    },
+    {
+      "title": "爱吃肉",
+      "authour": "路飞",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "你今天真好看",
+      "postId": 1
+    },
+    {
+      "body": "你游戏打的真好",
+      "postId": 2,
+      "id": 2
+    },
+    {
+      "body": "你做的饭真好吃",
+      "postId": 3,
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

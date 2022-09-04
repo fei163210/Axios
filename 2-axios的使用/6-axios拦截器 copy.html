@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
+    <title>axios拦截器</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <h2>基本使用</h2>
+        <button class="btn btn-primary">发送GET请求</button>
+      </div>
+    </div>
+    <script>
+      // 获取按钮
+      const btn = document.querySelector('button');
+      // 定义请求拦截器
+      axios.interceptors.request.use(
+        config => {
+          console.log('请求拦截器成功');
+          // 修改config中的参数
+          config.params = { a: 100 };
+          return config;
+          // throw 'error';
+        },
+        error => {
+          console.log('请求拦截器失败');
+          return Promise.reject(error);
+        }
+      );
+      // 定义响应拦截器
+      axios.interceptors.response.use(
+        response => {
+          console.log('响应拦截器成功');
+          return response;
+        },
+        error => {
+          console.log('响应拦截器失败');
+          return Promise.reject(error);
+        }
+      );
+      btn.onclick = () => {
+        // 发送请求
+        axios({
+          method: 'get',
+          url: 'http://localhost:3000/comments/1',
+        })
+          .then(result => {
+            console.log(result);
+          })
+          .catch(err => {
+            console.log('自定义失败回调');
+          });
+      };
+    </script>
+  </body>
+</html>
